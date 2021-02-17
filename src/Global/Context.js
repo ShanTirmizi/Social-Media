@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 import { auth } from '../config'
 
 export const ContextProvider = createContext();
@@ -6,6 +6,8 @@ export const ContextProvider = createContext();
 
 const Context = (props) => {
     const [model, setModel] = useState(false);
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
     const openModel = () => {
         setModel(true);
     }
@@ -27,9 +29,26 @@ const Context = (props) => {
         const { email, password } = user
         const res = await auth.signInWithEmailAndPassword(email, password);
         setModel(false);
-    }
+    };
+    const logout = () => {
+        auth
+          .signOut()
+          .then(() => {
+            setUser(null);
+          })
+          .catch((err) => {
+            console.log(err);
+        });
+    };
+    useEffect(() => {
+        auth.onAuthStateChanged((user) => {
+            setUser(user);
+            setLoading(false);
+        });
+    }, []);
+    console.log("Login user", user)
     return (
-        <ContextProvider.Provider value={{ model, openModel, closeModel, register, login }}>
+        <ContextProvider.Provider value={{ model, openModel, closeModel, register, login, logout, loading, user }}>
             {props.children}
         </ContextProvider.Provider>
     )
