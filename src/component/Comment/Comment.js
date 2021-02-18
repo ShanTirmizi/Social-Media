@@ -6,7 +6,7 @@ import { db } from '../../config';
 const Comment = (props) => {
     const { loading, user, publishComment } = useContext(ContextProvider)
     const [state, setState] = useState('')
-    const [comments, setComments] = React.useState([]);
+    const [comments, setComments] = useState([]);
 
     const postComment = (e) => {
         e.preventDefault();

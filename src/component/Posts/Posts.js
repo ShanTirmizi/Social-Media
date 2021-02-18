@@ -12,9 +12,7 @@ const Posts = () => {
             <div className="posts__header-avatar">{post.username[0]}</div>
             <div className="posts__header-name">{post.username}</div>
           </div>
-          <div className="posts__img">
-            <img src={post.image} alt={post.image} />
-          </div>
+            <img src={post.image} alt={post.image} className='posts__img' />
           <Comment id={post.id} />
         </div>
       ))}
