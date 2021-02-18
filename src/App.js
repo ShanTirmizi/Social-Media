@@ -3,6 +3,7 @@ import Navbar from './component/Navbar/Navbar';
 import Model from './component/Model/Model';
 import Context from './Global/Context';
 import Create from './component/Create/Create';
+import Posts from './component/Posts/Posts';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Navbar/>
       <div className="container">
         <Create />
+        <Posts />
       </div>
       <Model />
     </Context>

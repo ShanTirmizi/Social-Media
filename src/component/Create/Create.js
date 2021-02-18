@@ -4,7 +4,7 @@ import { GoDeviceCamera } from "react-icons/go";
 import { ContextProvider } from '../../Global/Context';
 
 const Create = () => {
-    const { create } = useContext(ContextProvider);
+    const { create, user, loading } = useContext(ContextProvider);
     const [title, setTitle] = useState('');
     const [image, setImage] = useState('');
     const handleImage = (event) => {
@@ -17,29 +17,35 @@ const Create = () => {
         setImage('')
     }
     return (
-        <div className='create'>
-            <form onSubmit={createPost}>
-                <div className="create__input">
-                    <input
-                    type='text'
-                    className='create__input__field'
-                    placeholder='Share something...'
-                    onChange={(e) => setTitle(e.target.value)}
-                    value={title}
-                    required
-                    />
+        <>
+            {!loading && user ? (
+                <div className='create'>
+                    <form onSubmit={createPost}>
+                        <div className="create__input">
+                            <input
+                            type='text'
+                            className='create__input__field'
+                            placeholder='Share something...'
+                            onChange={(e) => setTitle(e.target.value)}
+                            value={title}
+                            required
+                            />
+                        </div>
+                        <div className="create__second">
+                            <div className="create__second-a">
+                                <label htmlFor='file'><GoDeviceCamera className='camera' /></label>
+                                <input type='file' className='file' id='file' onChange={handleImage} required/>
+                            </div>
+                            <div className="create__second-b">
+                                <input type='submit' value='Create' className='btn-sweet' />
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div className="create__second">
-                    <div className="create__second-a">
-                        <label htmlFor='file'><GoDeviceCamera className='camera' /></label>
-                        <input type='file' className='file' id='file' onChange={handleImage} required/>
-                    </div>
-                    <div className="create__second-b">
-                        <input type='submit' value='Create' className='btn-sweet' />
-                    </div>
-                </div>
-            </form>
-        </div>
+            ) : (
+                ""
+            )}
+        </>
     )
 }
 

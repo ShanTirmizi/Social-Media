@@ -10,6 +10,7 @@ const Context = (props) => {
     const [model, setModel] = useState(false);
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [posts, setPosts] = useState([]);
     const openModel = () => {
         setModel(true);
     }
@@ -70,16 +71,37 @@ const Context = (props) => {
               });
           }
         );
-      };
+    };
+    const publishComment = (data) => {
+        const { id, comment } = data;
+        db.collection("posts").doc(id).collection("comments").add({
+          comment,
+          username: user.displayName,
+          currentTime: firebase.firestore.FieldValue.serverTimestamp(),
+        });
+    };
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
             setUser(user);
             setLoading(false);
         });
-    }, []);
+
+        db.collection("posts")
+        .orderBy("currentTime", "desc")
+        .onSnapshot((snp) => {
+          setPosts(
+            snp.docs.map((doc) => ({
+              id: doc.id,
+              title: doc.data().title,
+              image: doc.data().image,
+              username: doc.data().username,
+            }))
+          );
+        });
+    }, [user, loading]);
     console.log("Login user", user)
     return (
-        <ContextProvider.Provider value={{ model, openModel, closeModel, register, login, logout, loading, user, create }}>
+        <ContextProvider.Provider value={{ model, openModel, closeModel, register, login, logout, loading, user, create, posts, publishComment }}>
             {props.children}
         </ContextProvider.Provider>
     )
