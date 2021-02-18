@@ -13,6 +13,8 @@ const Create = () => {
     const createPost = (event) => {
         event.preventDefault();
         create({ title, image })
+        setTitle('')
+        setImage('')
     }
     return (
         <div className='create'>
