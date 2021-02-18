@@ -53,6 +53,12 @@
     /* padding: 0 0.5rem; */
 }
 
+.posts__title {
+    margin: 1rem;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
 @media (max-width: 765px) {
     .posts {
         margin: 15px auto;

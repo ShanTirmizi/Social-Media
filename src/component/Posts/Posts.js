@@ -13,6 +13,8 @@ const Posts = () => {
             <div className="posts__header-name">{post.username}</div>
           </div>
             <img src={post.image} alt={post.image} className='posts__img' />
+            <div className="posts__title">{post.title}</div>
+            {/* <br /> */}
           <Comment id={post.id} />
         </div>
       ))}
