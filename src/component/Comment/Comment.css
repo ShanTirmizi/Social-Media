@@ -24,6 +24,7 @@
     align-items: center;
     padding: 0 10px 10px 10px;
     
+    
 }
 
 .comments__container-name {
@@ -33,6 +34,6 @@
 
 .comments__container-msg {
     font-size: 14px;
-    color: var(--white);
+    color: var(--color-1);
     font-weight: 300;
 }

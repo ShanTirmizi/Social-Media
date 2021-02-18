@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import './Create.css'
-import { GoDeviceCamera } from "react-icons/go";
 import { ContextProvider } from '../../Global/Context';
+
 
 const Create = () => {
     const { create, user, loading } = useContext(ContextProvider);
@@ -33,7 +33,7 @@ const Create = () => {
                         </div>
                         <div className="create__second">
                             <div className="create__second-a">
-                                <label htmlFor='file'><GoDeviceCamera className='camera' /></label>
+                                <label htmlFor='file'></label>
                                 <input type='file' className='file' id='file' onChange={handleImage} required/>
                             </div>
                             <div className="create__second-b">
@@ -43,7 +43,10 @@ const Create = () => {
                     </form>
                 </div>
             ) : (
-                ""
+                <div className='create__Login'>
+                    Register now to start uploading
+                </div>
+                
             )}
         </>
     )
