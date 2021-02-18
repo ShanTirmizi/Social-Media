@@ -20,10 +20,14 @@ const Navbar = () => {
         logout();
     }
     const checkUser = () => {
-        return !loading && user ? (
-            <li>{user.displayName}/<span onClick={userLogout}>Logout</span></li>
+        return !loading ? (
+            !loading && user ? (
+                <li>{user.displayName}/<span onClick={userLogout}>Logout</span></li>
+            ) : (
+                <li onClick={openForms}>Register/Login</li>
+            )
         ) : (
-            <li onClick={openForms}>Register/Login</li>
+            'Loading...'
         )
     }
     return (

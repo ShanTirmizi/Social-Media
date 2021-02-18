@@ -1,0 +1,48 @@
+.create {
+    width: 65%;
+    margin: 15px 0;
+    background: var(--white);
+    padding: 10px;
+    border: 1px solid #efefef;
+    border-radius: 3px;
+}
+
+.create__input__field {
+    width: 100%;
+    height: 40px;
+    padding: 0 13px;
+    border: 1px solid #efefef;
+    outline: none;
+    border-radius: 2px;
+}
+
+.create__second {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+.file {
+    display: none;
+}
+.camera {
+    color: #f83a63;
+    font-size: 30px;
+    cursor: pointer;
+}
+.create__second-a {
+    flex: 1;
+}
+.create__second-b {
+    flex: 1;
+    text-align: right;
+}
+
+.btn-sweet {
+    background: #f83a63;
+    color: var(--white);
+    text-decoration: none;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 2px;
+    cursor: pointer;
+}
