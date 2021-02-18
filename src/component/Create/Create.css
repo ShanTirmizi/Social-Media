@@ -46,3 +46,10 @@
     border-radius: 2px;
     cursor: pointer;
 }
+
+@media (max-width: 765px) {
+    .create {
+        width: 90%;
+        margin: 15px auto;
+    }
+}

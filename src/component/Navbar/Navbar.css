@@ -64,3 +64,15 @@
     font-size: 25px;
     cursor: pointer;
 }
+
+@media (max-width: 765px) {
+    .navbar {
+      padding: 0 20px;
+    }
+    .navbar__middle {
+      display: none;
+    }
+    .navbar__icons {
+      display: none;
+    }
+}
