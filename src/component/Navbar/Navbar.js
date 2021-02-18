@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import './Navbar.css'
-import logo from '../../assests/logo.jpg'
+import logo from '../../assests/instagram.png'
 import { BiSearchAlt } from 'react-icons/bi'
 import {
     FaTelegramPlane,
