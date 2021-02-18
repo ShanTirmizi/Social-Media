@@ -40,6 +40,9 @@ const Context = (props) => {
             console.log(err);
         });
     };
+    const create = (data) => {
+        const { title, image } = data
+    };
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
             setUser(user);
@@ -48,7 +51,7 @@ const Context = (props) => {
     }, []);
     console.log("Login user", user)
     return (
-        <ContextProvider.Provider value={{ model, openModel, closeModel, register, login, logout, loading, user }}>
+        <ContextProvider.Provider value={{ model, openModel, closeModel, register, login, logout, loading, user, create }}>
             {props.children}
         </ContextProvider.Provider>
     )
